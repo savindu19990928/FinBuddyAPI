@@ -16,8 +16,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path("admin/", admin.site.urls),
+    # API Endpoints
+    path('api/auth/', include('users.urls')),
+    path('api/finances/', include('finances.urls')),
+    path('api/budgeting/', include('budgeting.urls')),
+    path('api/subscriptions/', include('subscriptions.urls')),
+    path('api/support/', include('support.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

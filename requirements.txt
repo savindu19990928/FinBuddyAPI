@@ -4,8 +4,8 @@ django-cors-headers
 djangorestframework
 djangorestframework-simplejwt
 email-validator
-mysqlclient
-pymysql
+psycopg2-binary
+paypalrestsdk
 Pillow
 django-jet-reboot
 feedparser
